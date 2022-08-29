@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Activity x:Class="Builder" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:upa="clr-namespace:UiPath.Pipelines.Activities;assembly=UiPath.Pipelines.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="32">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Pipelines.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Pipelines.Activities.Stages</x:String>
+      <x:String>UiPath.Pipelines.Activities.AutomationOps</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>UiPath.Pipelines.Activities.BaseActivities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="10">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Net.Primitives</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Pipelines.Activities</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <ui:ManualTrigger Result="{x:Null}" DisplayName="Manual Trigger" sap2010:WorkflowViewState.IdRef="ManualTrigger_1" />
+    <upa:Stage DisplayName="Stage 1" sap2010:WorkflowViewState.IdRef="Stage_2" KeyId="4b857964-f4b7-4995-9ad6-36ab783f32f5">
+      <upa:Stage.ActivityDelegate>
+        <ActivityAction>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <upa:Clone AccessToken="{x:Null}" CommitSha="{x:Null}" ContinueOnError="{x:Null}" DestinationPath="{x:Null}" RepoUrl="{x:Null}" RepositoryPath="{x:Null}" DisplayName="Clone" sap2010:WorkflowViewState.IdRef="Clone_1" TimeoutMS="60000" />
+          </Sequence>
+        </ActivityAction>
+      </upa:Stage.ActivityDelegate>
+    </upa:Stage>
+    <upa:Stage DisplayName="Stage" sap2010:WorkflowViewState.IdRef="Stage_1" KeyId="0eca7d72-d048-4c96-99f5-b7ba1d5c0b0e">
+      <upa:Stage.ActivityDelegate>
+        <ActivityAction>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <upa:Build ContinueOnError="{x:Null}" PackagePath="{x:Null}" ProjectPath="{x:Null}" RepositoryPath="{x:Null}" Version="{x:Null}" DisplayName="Build" sap2010:WorkflowViewState.IdRef="Build_1" />
+          </Sequence>
+        </ActivityAction>
+      </upa:Stage.ActivityDelegate>
+    </upa:Stage>
+    <upa:Stage DisplayName="Stage 2" sap2010:WorkflowViewState.IdRef="Stage_3" KeyId="045c53ef-788d-40fa-8411-537c05425c35">
+      <upa:Stage.ActivityDelegate>
+        <ActivityAction>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <upa:PublishPackage ContinueOnError="{x:Null}" FolderName="{x:Null}" OrchestratorUrl="{x:Null}" PackagePath="{x:Null}" DisplayName="Publish Package" sap2010:WorkflowViewState.IdRef="PublishPackage_1" TimeoutMS="60000" />
+          </Sequence>
+        </ActivityAction>
+      </upa:Stage.ActivityDelegate>
+    </upa:Stage>
+    <upa:Stage DisplayName="Stage 3" sap2010:WorkflowViewState.IdRef="Stage_4" KeyId="944272b8-5086-4c1f-95c5-a57e74e81218">
+      <upa:Stage.ActivityDelegate>
+        <ActivityAction>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_5">
+            <upa:UpdateProcess ContinueOnError="{x:Null}" FolderName="{x:Null}" OrchestratorUrl="{x:Null}" PackageName="{x:Null}" PackageVersion="{x:Null}" ProcessName="{x:Null}" DisplayName="Update Process" sap2010:WorkflowViewState.IdRef="UpdateProcess_1" TimeoutMS="60000" />
+          </Sequence>
+        </ActivityAction>
+      </upa:Stage.ActivityDelegate>
+    </upa:Stage>
+    <upa:Stage DisplayName="Stage 4" sap2010:WorkflowViewState.IdRef="Stage_5" KeyId="089b90f8-d8d4-4bd9-80a2-444818e134b2">
+      <upa:Stage.ActivityDelegate>
+        <ActivityAction>
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <upa:DownloadPackage ContinueOnError="{x:Null}" FolderName="{x:Null}" OrchestratorUrl="{x:Null}" PackageName="{x:Null}" PackagePath="{x:Null}" PackageVersion="{x:Null}" DisplayName="Download Package" sap2010:WorkflowViewState.IdRef="DownloadPackage_1" IsLibrary="False" TimeoutMS="60000" />
+          </Sequence>
+        </ActivityAction>
+      </upa:Stage.ActivityDelegate>
+    </upa:Stage>
+  </Sequence>
+</Activity>
